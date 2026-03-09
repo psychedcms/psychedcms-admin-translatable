@@ -1,6 +1,6 @@
 import { Box, Card, CardContent, Typography, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import TranslateIcon from '@mui/icons-material/Translate';
-import { useResourceContext } from 'react-admin';
+import { useResourceContext, useTranslate } from 'react-admin';
 
 import { useEditLocale } from '../providers/EditLocaleContext.tsx';
 import { useLocaleSettings } from '../hooks/useLocaleSettings.ts';
@@ -13,6 +13,7 @@ import { usePsychedSchema } from '../hooks/usePsychedSchema.ts';
  * translatable fields and multiple locales.
  */
 export function LocaleSwitcher() {
+  const translate = useTranslate();
   const resourceFromContext = useResourceContext();
   const resourceSchema = usePsychedSchema(resourceFromContext ?? '');
   const { locale, setLocale } = useEditLocale();
@@ -49,7 +50,7 @@ export function LocaleSwitcher() {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5 }}>
           <TranslateIcon fontSize="small" />
           <Typography variant="subtitle2" fontWeight="bold">
-            Language
+            {translate('psyched.sidebar.language', { _: 'Language' })}
           </Typography>
         </Box>
         <ToggleButtonGroup

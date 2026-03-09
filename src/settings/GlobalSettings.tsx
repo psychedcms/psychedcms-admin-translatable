@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNotify } from 'react-admin';
+import { useNotify, useTranslate } from 'react-admin';
 import {
   Box,
   Card,
@@ -39,6 +39,7 @@ async function saveDefaultLocale(defaultLocale: string): Promise<void> {
 export function GlobalSettings() {
   const { defaultLocale, supportedLocales, reload } = useLocaleSettings();
   const notify = useNotify();
+  const translate = useTranslate();
 
   const [selectedDefault, setSelectedDefault] = useState(defaultLocale);
   const [saving, setSaving] = useState(false);
@@ -63,24 +64,28 @@ export function GlobalSettings() {
     }
   };
 
+  const defaultLanguageLabel = translate('psyched.translatable.default_language', { _: 'Default Language' });
+
   return (
     <Box sx={{ maxWidth: 800, mt: 2 }}>
       <Typography variant="h5" gutterBottom fontWeight="bold">
-        Global Settings
+        {translate('psyched.translatable.global_settings_title', { _: 'Global Settings' })}
       </Typography>
 
       <Card variant="outlined" sx={{ mb: 3 }}>
         <CardContent>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
             <LanguageIcon />
-            <Typography variant="h6">Language</Typography>
+            <Typography variant="h6">
+              {translate('psyched.translatable.language_section', { _: 'Language' })}
+            </Typography>
           </Box>
 
           <FormControl sx={{ minWidth: 200, mb: 3 }}>
-            <InputLabel>Default Language</InputLabel>
+            <InputLabel>{defaultLanguageLabel}</InputLabel>
             <Select
               value={selectedDefault}
-              label="Default Language"
+              label={defaultLanguageLabel}
               onChange={(e) => setSelectedDefault(e.target.value)}
             >
               {supportedLocales.map((loc) => (
@@ -98,7 +103,9 @@ export function GlobalSettings() {
               onClick={handleSave}
               disabled={!hasChanges || saving}
             >
-              {saving ? 'Saving...' : 'Save'}
+              {saving
+                ? translate('psyched.translatable.saving', { _: 'Saving...' })
+                : translate('psyched.translatable.save', { _: 'Save' })}
             </Button>
           </Box>
         </CardContent>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNotify, useLocaleState } from 'react-admin';
+import { useNotify, useLocaleState, useTranslate } from 'react-admin';
 import {
   Box,
   Card,
@@ -22,6 +22,7 @@ export function PreferencesSettings() {
   const [raLocale, setRaLocale] = useLocaleState();
   const { supportedLocales } = useLocaleSettings();
   const notify = useNotify();
+  const translate = useTranslate();
   const [selectedLocale, setSelectedLocale] = useState(raLocale);
 
   const handleSave = () => {
@@ -34,19 +35,22 @@ export function PreferencesSettings() {
   return (
     <Box sx={{ maxWidth: 800, mt: 2 }}>
       <Typography variant="h5" gutterBottom fontWeight="bold">
-        Preferences
+        {translate('psyched.translatable.preferences_title', { _: 'Preferences' })}
       </Typography>
 
       <Card variant="outlined" sx={{ mb: 3 }}>
         <CardContent>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
             <TranslateIcon />
-            <Typography variant="h6">Language</Typography>
+            <Typography variant="h6">
+              {translate('psyched.translatable.ui_language', { _: 'Language' })}
+            </Typography>
           </Box>
 
           <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-            Choose your preferred language for the admin interface.
-            Content editing language is managed separately in each edit form.
+            {translate('psyched.translatable.ui_language_description', {
+              _: 'Choose your preferred language for the admin interface. Content editing language is managed separately in each edit form.',
+            })}
           </Typography>
 
           <ToggleButtonGroup
@@ -76,7 +80,7 @@ export function PreferencesSettings() {
               onClick={handleSave}
               disabled={!hasChanges}
             >
-              Save Preferences
+              {translate('psyched.translatable.save_preferences', { _: 'Save Preferences' })}
             </Button>
           </Box>
         </CardContent>

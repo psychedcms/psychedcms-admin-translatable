@@ -7,6 +7,8 @@ import { EditLocaleProvider } from './providers/EditLocaleContext.tsx';
 import { localeHttpMiddleware } from './middleware/localeHttpMiddleware.ts';
 import { GlobalSettings } from './settings/GlobalSettings.tsx';
 import { PreferencesSettings } from './settings/PreferencesSettings.tsx';
+import { enMessages } from './i18n/en.ts';
+import { frMessages } from './i18n/fr.ts';
 
 import PublicIcon from '@mui/icons-material/Public';
 import TuneIcon from '@mui/icons-material/Tune';
@@ -33,6 +35,7 @@ registerPlugin({
       menuSection: 'global',
     },
   ],
+  i18nMessages: { en: enMessages, fr: frMessages },
 });
 
 export { EditLocaleProvider, useEditLocale, getCurrentEditLocale } from './providers/EditLocaleContext.tsx';
