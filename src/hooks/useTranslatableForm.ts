@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { useEditLocale } from '../providers/EditLocaleContext.tsx';
 import { usePsychedSchema } from './usePsychedSchema.ts';
-import { useLocaleSettings } from './useLocaleSettings.ts';
+import { useLocaleSettings } from '@psychedcms/admin-core';
 
 const entrypoint = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 

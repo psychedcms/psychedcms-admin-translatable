@@ -3,7 +3,7 @@ import TranslateIcon from '@mui/icons-material/Translate';
 import { useResourceContext, useTranslate } from 'react-admin';
 
 import { useEditLocale } from '../providers/EditLocaleContext.tsx';
-import { useLocaleSettings } from '../hooks/useLocaleSettings.ts';
+import { useLocaleSettings } from '@psychedcms/admin-core';
 import { usePsychedSchema } from '../hooks/usePsychedSchema.ts';
 
 /**
