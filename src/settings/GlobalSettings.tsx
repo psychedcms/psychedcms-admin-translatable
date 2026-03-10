@@ -14,7 +14,7 @@ import {
 import LanguageIcon from '@mui/icons-material/Language';
 import SaveIcon from '@mui/icons-material/Save';
 
-import { useLocaleSettings } from '../hooks/useLocaleSettings.ts';
+import { useLocaleSettings } from '@psychedcms/admin-core';
 
 const entrypoint = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 

@@ -44,4 +44,4 @@ export { TranslatableFormManager } from './components/TranslatableFormManager.ts
 export type { TranslatableSaveHandle } from './components/TranslatableFormManager.tsx';
 export { LocaleToggle } from './components/LocaleToggle.tsx';
 export { useTranslatableForm } from './hooks/useTranslatableForm.ts';
-export { useLocaleSettings } from './hooks/useLocaleSettings.ts';
+export { useLocaleSettings } from '@psychedcms/admin-core';

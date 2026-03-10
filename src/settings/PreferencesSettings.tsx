@@ -12,7 +12,7 @@ import {
 import TranslateIcon from '@mui/icons-material/Translate';
 import SaveIcon from '@mui/icons-material/Save';
 
-import { useLocaleSettings } from '../hooks/useLocaleSettings.ts';
+import { useLocaleSettings } from '@psychedcms/admin-core';
 
 /**
  * User Preferences page — allows the user to set their preferred UI language.

@@ -1,7 +1,7 @@
 import { useLocaleState } from 'react-admin';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 
-import { useLocaleSettings } from '../hooks/useLocaleSettings.ts';
+import { useLocaleSettings } from '@psychedcms/admin-core';
 
 /**
  * Language toggle for the app bar.
