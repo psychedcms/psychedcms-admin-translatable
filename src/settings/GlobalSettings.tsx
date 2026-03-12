@@ -18,11 +18,15 @@ import { useLocaleSettings } from '@psychedcms/admin-core';
 
 const entrypoint = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 
-async function saveDefaultLocale(defaultLocale: string): Promise<void> {
-  const response = await fetch(`${entrypoint}/locale-settings`, {
+async function saveSettings(data: Record<string, string>): Promise<void> {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${entrypoint}/settings`, {
     method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ defaultLocale }),
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify(data),
   });
 
   if (!response.ok) {
@@ -54,7 +58,7 @@ export function GlobalSettings() {
   const handleSave = async () => {
     setSaving(true);
     try {
-      await saveDefaultLocale(selectedDefault);
+      await saveSettings({ default_locale: selectedDefault });
       reload();
       notify('Default locale saved', { type: 'success' });
     } catch (err) {
