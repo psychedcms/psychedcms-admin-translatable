@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
+  "name": "admin-translatable",
+  "projectType": "library",
+  "sourceRoot": "packages/psychedcms-admin-translatable/src",
+  "targets": {
+    "lint": {
+      "command": "npx eslint src/",
+      "options": {
+        "cwd": "packages/psychedcms-admin-translatable"
+      }
+    }
+  },
+  "implicitDependencies": [
+    "admin-core"
+  ]
+}
