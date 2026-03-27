@@ -11,5 +11,15 @@
     "react-dom": "^19.0.0",
     "@mui/material": ">=6.0.0",
     "@mui/icons-material": ">=6.0.0"
-  }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psychedcms/psychedcms-admin-translatable.git"
+  },
+  "files": [
+    "src"
+  ]
 }
