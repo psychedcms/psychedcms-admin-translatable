@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
 
-import { useLocaleSettings } from '@psychedcms/admin-core';
+import { useLocaleSettings, setEditLocale as setCoreEditLocale } from '@psychedcms/admin-core';
 
 interface EditLocaleContextValue {
   locale: string;
@@ -44,12 +44,14 @@ export function EditLocaleProvider({ children }: { children: ReactNode }) {
     if (!loading && !initializedRef.current) {
       initializedRef.current = true;
       currentEditLocale = defaultLocale;
+      setCoreEditLocale(defaultLocale);
       setLocaleState(defaultLocale);
     }
   }, [defaultLocale, loading]);
 
   const setLocale = useCallback((newLocale: string) => {
     currentEditLocale = newLocale;
+    setCoreEditLocale(newLocale);
     setLocaleState(newLocale);
   }, []);
 
